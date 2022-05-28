@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            height: 48px;
+            width: 400px;
+            font-size: 40px;
+        }
+        li:hover{
+            text-transform: lowercase;
+            background-color: #fff;
+    
+        }
+        #btnremove{
+            margin: 15px;
+        }
+        input{
+            border: 1px solid black;
+            height: 5000x;
+        }
+        button{
+            background-color: forestgreen; 
+            font-size: 48px;
+        }
+        #store{
+            width:70% ;
+            /* margin-top: 50px; */
+            margin: 50px auto auto auto ;
+            border: 1px solid #cbe2ef;
+        }
+        body{
+            background-color: #a9c0cb;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div>
+            <div style="margin: 3em 3em 0 3em;">
+                <label for="todolist"><h1><span>Todo</span>List</h1></label><br>
+                
+                <input type="text" name="todolist" autofocus="autofocus" id="todolist" class="todolist" placeholder="Enter Your Task">
+               <button type="submit" onclick="todo()" >Add</button>
+                <button type="reset" onclick="listremove()"     >clear</button>
+            
+            </div>
+            
+        </div>
+       </center>
+       <div  id="ulstore">
+        <ul id="store" style="color:rgb(93, 93, 224) ; font-size: 48px; text-transform: uppercase;text-align:left;">
+            
+        </ul>
+    </div>
+</body>
+<script>
+    
+    var tolist=[];
+    function todo(){
+        let addlist=document.getElementById("todolist").value;
+        
+            let a="";
+            tolist.push(addlist);
+            for(var i=0;i<tolist.length;i++)
+            {
+                 a= a+"<li > <button class='btn btn-danger' style=float:right id='btnremove' onclick = 'remove("+i+")' >X</button>"+tolist[i]+"</li>";
+            }
+            document.getElementById("store").innerHTML=a; 
+            document.getElementById("todolist").value="";
+        
+    }
+    function listremove(){
+        document.getElementById("store").innerHTML="";
+        tolist.length = 0;
+        console.log(tolist)
+    }
+    function remove(c){
+        let a="";
+        tolist.splice(c,1);
+        for(var i=0;i<tolist.length;i++)
+        {
+           a= a+"<li > <button class='btn btn-danger' style=float:right id='btnremove'  onclick = 'remove("+i+")' >X</button>"+tolist[i]+"</li>";
+        
+        }
+        document.getElementById("store").innerHTML=a; 
+    } 
+    function getfoucx(){
+        document.getElementById("todolist").focus();
+    }
+
+    
+</script>
+</html>
+
